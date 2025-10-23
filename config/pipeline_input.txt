@@ -1,0 +1,44 @@
+#Include RNA files in analysis?
+RNA=TRUE
+#Include ATAC files in analysis?
+DNA=TRUE
+#Number of Cores available for use
+CORES=40
+#Output folder for STAR index
+VIRAL_INDEX_FOLDER_GEX=/path/to/user/indexes/HXB2_cladeB
+#Name of STAR index
+VIRAL_INDEX_NAME=HXB2_cladeB
+#Adjustment factor used by STAR for index generation
+ADJUSTMENT_FACTOR=12
+#Output folder for bowtie2 index
+VIRAL_INDEX_FOLDER_ATAC=/path/to/user/indexes/bowtie2
+#Fasta file containing all viral sequences
+VIRAL_FASTA=data/HXB2_cladeB.fasta
+#Folder for all output of program
+OUTPUT_FOLDER=/path/to/user/output
+#Comma-delimited list of folders containing the RNA fastq files
+GEX_FASTQ_FOLDER=/path/to/user/RNAfastq1,/path/to/user/RNAfastq2
+#Comma-delimited list of folders containing the ATAC fastq files
+ATAC_FASTQ_FOLDER=/path/to/user/DNAfastq1,/path/to/user/DNAfastq2
+#RNA whitelist file for checking barcodes
+GEX_WHITE=data/737K-arc-v1_gex.txt
+#ATAC whitelist file for checking barcodes
+ATAC_WHITE=data/737K-arc-v1_atac.txt
+#Naming format to be recognized for the RNA-seq read file. Allows for
+#anything before the lane number. Should only need to change R2/3
+GEX_READ_GREP=*_L*_R3_*.fastq.gz
+#Naming format to be recognized for the RNA-seq barcode and UMI file.
+#Allows for anything before the lane number
+GEX_CB_GREP=*_L*_R1_*.fastq.gz
+#Naming format to be recognized for the ATAC-seq read 1 file. Allows for          
+#anything before the lane number
+ATAC_READ1_GREP=*_L*_R1_*.fastq.gz
+#Naming format to be recognized for the ATAC-seq read 2 file. Allows for          
+#anything before the lane number
+ATAC_READ2_GREP=*_L*_R3_*.fastq.gz
+#Naming format to be recognized for the ATAC-seq barcode and UMI file.
+#Allows for anything before the lane number
+ATAC_CB_GREP=*_L*_R2_*.fastq.gz
+#String within the ATAC file name that specifies it as ATAC-seq.
+#Might be ATAC or A
+ATAC_SIGNIFIER=ATAC
