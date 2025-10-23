@@ -6,6 +6,6 @@ This pipeline processes sequencing data to identify viral integrations.
 
 ```bash
 git clone https://github.com/KlugerLab/ViralDetection.git
-cd my-pipeline
+cd ViralDetection
 docker build -f docker/Dockerfile -t viral_detection .
 docker run --rm viral_detection
