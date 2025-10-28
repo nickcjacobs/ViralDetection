@@ -7,15 +7,12 @@ It can be run using **Docker** (recommended for full reproducibility) or alterna
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Option 1: Run with Docker (Recommended)](#option-1-run-with-docker-recommended)
-- [Option 2: Run with Conda](#option-2-run-with-conda)
-- [Input Configuration](#input-configuration)
-- [Running the Pipeline](#running-the-pipeline)
-- [Output](#output)
-- [Updating or Removing Environments](#updating-or-removing-environments)
-- [Contributing](#contributing)
-- [License](#license)
+- [Overview](#-overview)
+- [Option 1: Run with Docker (Recommended)](#-option-1-run-with-docker-recommended)
+- [Option 2: Run with Conda](#-option-2-run-with-conda)
+- [Input Configuration](#-input-configuration)
+- [Output](#-output)
+- [Updating or Removing Environments](#-updating-or-removing-environments)
 
 ---
 
@@ -54,7 +51,11 @@ From the repository root:
 
 ```
 docker build -t viral_detection .
+```
 
+### Run the pipeline
+
+```
 docker run --rm -v $(pwd):/app -w /app viral_detection \
     bash bin/viral_detection.sh config/pipeline_input.txt
 ```
