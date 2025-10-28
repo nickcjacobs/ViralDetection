@@ -46,6 +46,7 @@ Docker ensures complete reproducibility with all dependencies pre-installed.
 From the repository root:
 
 ```bash
+<<<<<<< HEAD
 docker build -t viral_detection .
 
 docker run --rm -v $(pwd):/app -w /app viral_detection \
@@ -141,3 +142,9 @@ For major updates, please open an issue first to discuss proposed modifications.
 
 Maintainer: Nick Jacobs
 Repository: github.com/KlugerLab/ViralDetection
+=======
+git clone https://github.com/KlugerLab/ViralDetection.git
+cd ViralDetection
+docker build -f docker/Dockerfile -t viral_detection .
+docker run --rm viral_detection
+>>>>>>> 9f0103d74181b6abe1a7de756aa1e193b69d2e1b
