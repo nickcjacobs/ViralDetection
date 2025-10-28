@@ -67,23 +67,23 @@ Explanation:
 
 The pipeline reads parameters from config/pipeline_input.txt
 
-🧫 Option 2: Run with Conda
+## 🧫 Option 2: Run with Conda
 
 If Docker is not available, you can run the same pipeline in a Conda environment.
 
-Prerequisites
+### Prerequisites
 
 Miniconda
  or
 Mambaforge
 
-Step 1: Clone this repository
+### Step 1: Clone this repository
 ```
 git clone https://github.com/nickcjacobs/ViralDetection.git
 cd ViralDetection
 ```
 
-Step 2: Create and activate the environment
+### Step 2: Create and activate the environment
 ```
 conda env create -f environment.yml
 conda activate viral_detection
@@ -93,12 +93,12 @@ This installs:
 
 samtools, bcftools, bowtie2, STAR, seqtk, parallel, pysam, and other required tools.
 
-Step 3: Run the pipeline
+### Step 3: Run the pipeline
 ```
 bash bin/viral_detection.sh config/pipeline_input.txt
 ```
 
-⚙️ Input Configuration
+## ⚙️ Input Configuration
 
 All input file paths and settings are specified in:
 
@@ -107,7 +107,7 @@ config/pipeline_input.txt
 
 Ensure this file includes the correct paths to your FASTQ files, reference genome, and other required inputs before running the pipeline.
 
-📊 Output
+## 📊 Output
 
 The pipeline produces:
 
@@ -121,7 +121,7 @@ Summary and log files in the designated output folder
 
 Output locations and naming conventions are controlled by your configuration file.
 
-🔄 Updating or Removing Environments
+## 🔄 Updating or Removing Environments
 
 If you modify environment.yml and want to apply updates:
 
