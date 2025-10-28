@@ -115,13 +115,13 @@ fi
 if [ "$RNA" = "TRUE" ]; then
 
     # Check if viral index folder exists
-#    if [[ ! -d "$VIRAL_INDEX_FOLDER_GEX" ]]; then
+    if [[ ! -d "$VIRAL_INDEX_FOLDER_GEX" ]]; then
         STAR --runThreadN $CORES \
 	     --runMode genomeGenerate \
 	     --genomeDir $VIRAL_INDEX_FOLDER_GEX \
 	     --genomeFastaFiles $VIRAL_FASTA \
 	     --genomeSAindexNbases $ADJUSTMENT_FACTOR
-#    fi
+    fi
 
     IFS=',' read -r -a GEX_FOLDERS <<< "$GEX_FASTQ_FOLDER"
     GEX_FILE_NAMES=()
@@ -194,10 +194,10 @@ fi
 if [ "$DNA" = "TRUE" ]; then
 
     # Check if viral index folder exists
-#    if [[ ! -d "$VIRAL_INDEX_FOLDER_ATAC" ]]; then
+    if [[ ! -d "$VIRAL_INDEX_FOLDER_ATAC" ]]; then
         mkdir $VIRAL_INDEX_FOLDER_ATAC
         bowtie2-build $VIRAL_FASTA "$VIRAL_INDEX_FOLDER_ATAC/$VIRAL_INDEX_NAME"
-#    fi
+    fi
 
     IFS=',' read -r -a ATAC_FOLDERS <<< "$ATAC_FASTQ_FOLDER"
     ATAC_FILE_NAMES=()
@@ -319,11 +319,6 @@ process_prefix() {
         fi
     done
 
-echo "$prefix"
-for f in "${files_to_merge[@]}"; do
-    echo "$f"
-done
-
     if [[ ${#files_to_merge[@]} -ne 0 ]]; then
         mkdir -p "$OUTPUT_FOLDER/$prefix"
 
@@ -373,8 +368,6 @@ export OUTPUT_FOLDER VIRAL_FASTA ADJUSTMENT_FACTOR cores_per_sample GEX_FILE_NAM
 # Use parallel to process prefixes in parallel, limiting to MAX_PARALLEL_JOBS
 parallel -j $max_samples process_prefix ::: "${unique_prefixes[@]}"
 
-exit 1
-
 if [ "$RNA" = "TRUE" ]; then
 
     # Calculate the largest possible number of parallel runs given a minimum of 8 cores per run
@@ -413,29 +406,6 @@ if [ "$RNA" = "TRUE" ]; then
     done
 
     wait
-
-#running_jobs=0
-
-# Run STAR again for each file with additional parameters
-#for file_info in "${FILE_NAMES[@]}"; do
-#    IFS="|" read -r NAME_PART FILE_NAME <<< "$file_info"
-#if [ "$NAME_PART" = "4084_HIVOUD_PFC_MAH_S13" ]; then
-#    if [ ! -e "$OUTPUT_FOLDER/$NAME_PART/${NAME_PART}_SJLog.out" ]; then
-#	STAR --genomeDir $OUTPUT_FOLDER/$NAME_PART/${NAME_PART} --runThreadN $cores_per_sample --readFilesIn $FASTQ_FOLDER/$FILE_NAME --readFilesCommand zcat --sjdbFileChrStartEnd $OUTPUT_FOLDER/$NAME_PART/${NAME_PART}_VCFSJ.out.tab --outFilterMultimapNmax 100000 --outFilterScoreMin 30 --outSAMmultNmax 1 --outMultimapperOrder Random --outFileNamePrefix $OUTPUT_FOLDER/$NAME_PART/${NAME_PART}_SJ --genomeLoad NoSharedMemory --outSAMtype BAM Unsorted &
-#    else
-#       continue
-#    fi
-#    ((running_jobs++))
-
-    # Check to see if as many jobs as possible are running
-#    if [ "$running_jobs" -eq "$max_samples" ]; then
-#        wait -n
-#        ((running_jobs--))
-#    fi
-#fi
-#done
-
-#wait
 
     # Process SAM files
     process_file_gex() {
