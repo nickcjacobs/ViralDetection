@@ -148,4 +148,4 @@ Submit a pull request describing your changes
 For major updates, please open an issue first to discuss proposed modifications.
 
 Maintainer: Nick Jacobs
-Repository: github.com/KlugerLab/ViralDetection
+Repository: github.com/nickcjacobs/ViralDetection
