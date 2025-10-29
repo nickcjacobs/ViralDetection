@@ -38,14 +38,14 @@ Docker ensures complete reproducibility with all dependencies pre-installed.
 - [Docker installed](https://docs.docker.com/get-docker/)
 - Internet connection for image building (first time only)
 
-### Clone this repository
+### Step 1: Clone this repository
 
 ```
 git clone https://github.com/nickcjacobs/ViralDetection.git
 cd ViralDetection
 ```
 
-### Build the Docker image
+### Step 2: Build the Docker image
 
 From the repository root:
 
@@ -53,7 +53,7 @@ From the repository root:
 docker build -t viral_detection .
 ```
 
-### Run the pipeline
+### Step 3: Run the pipeline
 
 ```
 docker run --rm -v $(pwd):/app -w /app viral_detection \
